@@ -85,8 +85,7 @@ class KlikApi(object):
             return {'chatID': chatID, 'message': message}
         else:
             return {'message': {'sent': False, 'message': 'Error'}}
-    
-    
+            
     def get_phone(self, method, phone):
         data = {}
         url = self.APIUrl + 'phone/' + self.klik_key + '/'+self.klik_secret +'/'+ method + '/' + phone
