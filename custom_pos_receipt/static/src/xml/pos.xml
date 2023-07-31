@@ -13,13 +13,13 @@
                     <strong>MONEDA:</strong> <t t-esc="receipt.currency.name" />
                 </div>
             </t>
-        </xpath>
-        <div>
+            <div>
             [CANT.] DESCRIPCION P/U TOTAL
             <t t-foreach="receipt.orderlines" t-as="line">
                 <br/>
                 <t t-esc="line.qty"/>                <t t-esc="line.price_unit"/> <t t-esc="line.price_subtotal"/>
             </t>
         </div>
+        </xpath>
     </t>
 </templates>
