@@ -18,8 +18,7 @@
             [CANT.] DESCRIPCION P/U TOTAL
             <t t-foreach="receipt.orderlines" t-as="line">
                 <br/>
-                <t t-esc="line.qty"/> <t t-esc="line.product.display_name ? line.product.display_name : 'Producto no disponible'"/>
-                 <t t-esc="line.price_unit"/> <t t-esc="line.price_subtotal"/>
+                <t t-esc="line.qty"/>                <t t-esc="line.price_unit"/> <t t-esc="line.price_subtotal"/>
             </t>
         </div>
     </t>
