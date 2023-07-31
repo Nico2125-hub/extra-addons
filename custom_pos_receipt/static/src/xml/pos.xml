@@ -8,7 +8,7 @@
                     <strong>DNI:</strong> <t t-esc="receipt.client.vat" /><br />
                     <t t-esc="receipt.client.name" /><br />
                     <t t-esc="receipt.client.city" /><br />
-                    <strong>FECHA EMISION:</strong> <t t-esc="receipt.invoice_date" /><br />
+                    <strong>FECHA EMISION:</strong> <t t-esc="receipt.date" /><br />
                     <strong>FECHA DE VENCIMIENTO:</strong> <t t-esc="receipt.date_deadline" /><br />
                     <strong>MONEDA:</strong> <t t-esc="receipt.currency.name" /><br />
                 </div>
