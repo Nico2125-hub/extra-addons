@@ -7,7 +7,17 @@
                     <strong>CLIENTE</strong><br/>
                     <strong>DNI:</strong> <t t-esc="receipt.client.vat" /><br />
                     <t t-esc="receipt.client.name" /><br />
-                    <t t-esc="receipt.client.city" />
+                    <t t-esc="receipt.client.city" /><br />
+                    <strong>FECHA EMISION:</strong>
+                    <t t-if="receipt.move_type in ['out_invoice', 'out_refund', 'in_invoice', 'in_refund']">
+                        <t t-esc="receipt.invoice_date" />
+                    </t>
+                    <t t-else="">
+                        <t t-esc="receipt.date" />
+                    </t>
+                    <br />
+                    <strong>FECHA DE VENCIMIENTO:</strong><t t-esc="receipt.invoice_date_due" /><br />
+                    <strong>MONEDA:</strong><t t-esc="receipt.currency_id.name" /><br />
                 </div>
             </t>
         </xpath>
