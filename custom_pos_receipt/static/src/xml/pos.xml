@@ -6,7 +6,7 @@
                 <div style="font-size: 13px; text-align: left; font-family: 'Times New Roman', serif;">
                     Client: <t t-esc="receipt.client.name" /><br />
                             <t t-esc="receipt.client.city" /><br />
-                            <t t-esc="receipt.client.var" />
+                            <t t-esc="receipt.client.type" />
                 </div>
             </t>
         </xpath>
