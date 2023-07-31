@@ -5,6 +5,7 @@
             <t t-if='receipt.client'>
                 <div>Client:
                     <t t-esc='receipt.client.name' />
+                    <t t-esc='receipt.client.city' />
                 </div>
             </t>
         </xpath>
