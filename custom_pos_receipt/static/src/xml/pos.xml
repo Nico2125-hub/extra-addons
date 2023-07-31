@@ -14,10 +14,30 @@
                 </div>
             </t>
         </xpath>
-            <t t-if="receipt.productos">
+           <t t-if="receipt.productos">
             <div>
                 <strong>[CANT.] DESCRIPCION P/U TOTAL</strong>
             </div>
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>CANT.</th>
+                        <th>DESCRIPCION</th>
+                        <th>P/U</th>
+                        <th>TOTAL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="receipt.productos" t-as="producto">
+                        <tr>
+                            <td><t t-esc="producto.quantity" /></td>
+                            <td><t t-esc="producto.name" /></td>
+                            <td><t t-esc="producto.price_unit" /></td>
+                            <td><t t-esc="producto.price_total" /></td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
         </t>
     </t>
 </templates>
