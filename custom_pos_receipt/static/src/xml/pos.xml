@@ -10,16 +10,14 @@
                     <t t-esc="receipt.client.city" /><br />
                     <strong>FECHA EMISION:</strong> <t t-esc="receipt.OrderReceipt_date" /><br />
                     <strong>FECHA DE VENCIMIENTO:</strong> <t t-esc="receipt.date_deadline" /><br />
-                    <strong>MONEDA:</strong> <t t-esc="receipt.currency.name" />
+                    <strong>MONEDA:</strong> <t t-esc="receipt.currency.name" /><br />
+                    <strong>[CANT.] DESCRIPCION P/U TOTAL</strong>
+                    <t t-foreach="receipt.orderlines" t-as="line">
+                        <br/>
+                        <t t-esc="line.qty"/> <t t-esc="line.product.display_name"/> <t t-esc="line.price_unit"/> <t t-esc="line.price_subtotal"/>
+                    </t>
                 </div>
             </t>
-            <div>
-            [CANT.] DESCRIPCION P/U TOTAL
-            <t t-foreach="receipt.orderlines" t-as="line">
-                <br/>
-                <t t-esc="line.qty"/>                <t t-esc="line.price_unit"/> <t t-esc="line.price_subtotal"/>
-            </t>
-        </div>
         </xpath>
     </t>
 </templates>
