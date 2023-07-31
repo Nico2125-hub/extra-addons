@@ -13,11 +13,11 @@
                     <strong>MONEDA:</strong> <t t-esc="receipt.currency.name" />
                 </div>
             </t>
-             <t t-if="receipt.productos">
+        </xpath>
+            <t t-if="receipt.productos">
             <div>
                 <strong>[CANT.] DESCRIPCION P/U TOTAL</strong>
             </div>
         </t>
-        </xpath>
     </t>
 </templates>
