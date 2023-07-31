@@ -14,39 +14,5 @@
                 </div>
             </t>
         </xpath>
-        <table class="receipt-orderlines" style="font-size: 15px; border-style: double; border-left: none; border-right: none; border-bottom: none; width: 160%;">
-            <colgroup>
-                <col width="40%" />
-                <col width="30%" />
-                <col width="30%" />
-            </colgroup>
-            <tr style="border-bottom: solid;">
-                <th style="text-align: left;">[CANT]</th>
-                <th style="text-align: left;">DESCRIPCION</th>
-                <th style="text-align: right;">P/U</th>
-                <th style="text-align: right;">TOTAL</th>
-            </tr>
-            <t t-foreach="receipt.orderlines" t-as="line">
-                <tr>
-                    <td style="padding-top: 1%; padding-bottom: 1%; text-align: left;">
-                        <t t-esc="line.qty"/>
-                    </td>
-                    <td style="padding-top: 1%; padding-bottom: 1%; text-align: left;">
-                        <t t-esc="line.product.display_name"/>
-                        <t t-if="line.get_discount() &gt; 0">
-                            <div style="font-size: 10px; font-style: italic; color: grey;">
-                                <t t-esc="'-' + str(line.get_discount()) + ' discount'"/>
-                            </div>
-                        </t>
-                    </td>
-                    <td style="padding-top: 1%; padding-bottom: 1%; text-align: right;">
-                        <t t-esc="line.price_unit"/>
-                    </td>
-                    <td style="padding-top: 1%; padding-bottom: 1%; text-align: right;">
-                        <t t-esc="line.price_subtotal"/>
-                    </td>
-                </tr>
-            </t>
-        </table>
     </t>
 </templates>
