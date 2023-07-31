@@ -4,7 +4,9 @@
         <xpath expr="//div[@class='pos-receipt-contact']" position="inside">
             <t t-if='receipt.client'>
                 <div style="font-size: 13px; text-align: left; font-family: 'Times New Roman', serif;">
-                    Client: <t t-esc="receipt.client.name" /> <t t-esc="receipt.client.city" /> <t t-esc="receipt.client.var" />
+                    Client: <t t-esc="receipt.client.name" /><br />
+                            <t t-esc="receipt.client.city" /><br />
+                            <t t-esc="receipt.client.var" />
                 </div>
             </t>
         </xpath>
