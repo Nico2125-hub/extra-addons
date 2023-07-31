@@ -14,7 +14,7 @@
                     <strong>[CANT.] DESCRIPCION P/U TOTAL</strong>
                     <t t-foreach="receipt.orderlines" t-as="line">
                         <br/>
-                        <t t-esc="line.qty"/> <t t-esc="line.product_id"/> <t t-esc="line.price_unit"/> <t t-esc="line.price_subtotal"/>
+                        <t t-esc="line.quantity"/> <t t-esc="line.product_id"/> <t t-esc="line.price_unit"/> <t t-esc="line.price_subtotal"/>
                     </t>
                 </div>
             </t>
