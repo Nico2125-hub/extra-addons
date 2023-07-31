@@ -10,7 +10,7 @@
                     <t t-esc="receipt.client.city" /><br />
                     <strong>FECHA EMISION:</strong> <t t-esc="receipt.invoice_date" /><br />
                     <strong>FECHA DE VENCIMIENTO:</strong> <t t-esc="receipt.due_date" /><br />
-                    <strong>MONEDA:</strong> <t t-esc="receipt.currency" /><br />
+                    <strong>MONEDA:</strong> <t t-esc="receipt.currency.name" /><br />
                 </div>
             </t>
         </xpath>
