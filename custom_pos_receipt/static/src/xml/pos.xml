@@ -12,17 +12,6 @@
                 </div>
             </t>
         </xpath>
-
-        <!-- Personalización de la sección 'receipt-orderlines' -->
-        <xpath expr="//table[@class='receipt-orderlines']" position="inside">
-            <tr>
-                <th>Descripción</th>
-                <th>Cantidad</th>
-                <th>Precio Unitario</th>
-                <th>Total</th>
-            </tr>
-            
-        </xpath>
     </t>
 </templates>
 
