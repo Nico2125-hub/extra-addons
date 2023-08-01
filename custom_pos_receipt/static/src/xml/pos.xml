@@ -14,7 +14,7 @@
                 </div>
             </t>
         </xpath>
-        <xpath expr="//table[@class='pos-receipt-orderlines']" position="inside">
+        <xpath expr="//table[@class='receipt-orderlines']" position="inside">
             <tr>
                 <th>Descripción</th>
                 <th>Cantidad</th>
