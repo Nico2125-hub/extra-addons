@@ -14,29 +14,5 @@
                 </div>
             </t>
         </xpath>
-        <xpath expr="//div[@class='pos-receipt-orderlines']" position="replace">
-            <div class="pos-receipt-orderlines">
-                <div style="font-size: 13px; text-align: left; font-family: 'Times New Roman', serif;">
-                    <strong>[CANT] DESCRIPCION P.U. TOTAL</strong><br/>
-                </div>
-                <!-- Aquí va el código para mostrar las líneas de pedido -->
-                <t t-if="receipt.orderlines">
-                    <t t-set="total" t-value="0.0" />
-                    <t t-foreach="receipt.orderlines" t-as="line">
-                        <div class="pos-receipt-line">
-                            <!-- Aquí va el contenido de las líneas de pedido -->
-                            <span class="product-name"><t t-esc="line.product_name" /></span>
-                            <span class="product-qty"><t t-esc="line.qty" /></span>
-                            <span class="product-price"><t t-esc="line.price_unit" /></span>
-                            <span class="product-total"><t t-esc="line.price_subtotal" /></span>
-                        </div>
-                        <t t-set="total" t-value="total + line.price_subtotal" />
-                    </t>
-                </t>
-                <div class="pos-receipt-total">
-                    <strong>Total: <t t-esc="total" /></strong>
-                </div>
-            </div>
-        </xpath>
     </t>
 </templates>
