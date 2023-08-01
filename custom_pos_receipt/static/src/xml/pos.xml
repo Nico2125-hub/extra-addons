@@ -14,5 +14,10 @@
                 </div>
             </t>
         </xpath>
+        <xpath expr="//div[@class='pos-receipt-orderlines']" position="before">
+            <div style="font-size: 13px; text-align: left; font-family: 'Times New Roman', serif;">
+                <strong>[CANT] DESCRIPCION P.U. TOTAL</strong><br/>
+            </div>
+        </xpath>
     </t>
 </templates>
