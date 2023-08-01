@@ -8,29 +8,93 @@
                     <strong>DNI:</strong> <t t-esc="receipt.client.vat" /><br />
                     <t t-esc="receipt.client.name" /><br />
                     <t t-esc="receipt.client.city" /><br />
+                    <strong>FECHA EMISION:</strong> <t t-esc="receipt.create_date" /><br />
+                    <strong>FECHA DE VENCIMIENTO:</strong> <t t-esc="receipt.date_deadline" /><br />
                     <strong>MONEDA:</strong> <t t-esc="receipt.currency.name" /><br />
                 </div>
             </t>
         </xpath>
-        <!-- Personalización de la sección 'receipt-paymentlines' -->
-        <xpath expr="//table[@class='receipt-paymentlines']" position="replace">
-            <table class='receipt-paymentlines'>
-                <colgroup>
-                    <col width='70%' />
-                    <col width='30%' />
-                </colgroup>
-                <t t-foreach="paymentlines" t-as="line">
+        <xpath expr="//table[@class='receipt-orderlines']" position="inside">
+                <tr>
+                    <th>Descripción</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Total</th>
+                </tr>
+                <t t-foreach="orderlines" t-as="orderline">
                     <tr>
                         <td>
-                            <t t-esc="line.name"/>
+                            <t t-esc="orderline.get_product().display_name"/>
+                            <t t-if="orderline.get_discount() > 0">
+                                <div class="pos-disc-font">
+                                    Con descuento del <t t-esc="orderline.get_discount()"/>%
+                                </div>
+                            </t>
+                        </td>
+                        <td>
+                            <t t-esc="orderline.get_quantity_str_with_unit()"/>
+                        </td>
+                        <td>
+                            <t t-set="unit_price" t-value="orderline.get_display_price()"/>
+                            <t t-esc="unit_price"/>
                         </td>
                         <td style='text-align:right'>
-                            <t t-esc="widget.format_currency(line.get_amount())"/>
+                            <t t-esc="widget.format_currency(orderline.get_price_with_tax())"/>
                         </td>
                     </tr>
                 </t>
-            </table>
-        </xpath>
-    </t>
-</templates>
-
+            </xpath>
+            <xpath expr="//table[@class='receipt-total']" position="replace">
+                <table class='receipt-total'>
+                    <colgroup>
+                        <col width='70%' />
+                        <col width='30%' />
+                    </colgroup>
+                    <tr>
+                        <td>Subtotal:</td>
+                        <td style='text-align:right'>
+                            <t t-esc="widget.format_currency(order.get_total_without_tax())"/>
+                        </td>
+                    </tr>
+                    <t t-foreach="order.get_tax_details()" t-as="taxdetail">
+                        <tr>
+                            <td><t t-esc="taxdetail.name" /></td>
+                            <td style='text-align:right'>
+                                <t t-esc="widget.format_currency(taxdetail.amount)"/>
+                            </td>
+                        </tr>
+                    </t>
+                    <tr>
+                        <td>Descuento:</td>
+                        <td style='text-align:right'>
+                            <t t-esc="widget.format_currency(order.get_total_discount())"/>
+                        </td>
+                    </tr>
+                    <tr class="emph">
+                        <td>Total:</td>
+                        <td style='text-align:right'>
+                            <t t-esc="widget.format_currency(order.get_total_with_tax())"/>
+                        </td>
+                    </tr>
+                </table>
+            </xpath>
+            <xpath expr="//table[@class='receipt-paymentlines']" position="replace">
+                <table class='receipt-paymentlines'>
+                    <colgroup>
+                        <col width='70%' />
+                        <col width='30%' />
+                    </colgroup>
+                    <t t-foreach="paymentlines" t-as="line">
+                        <tr>
+                            <td>
+                                <t t-esc="line.name"/>
+                            </td>
+                            <td style='text-align:right'>
+                                <t t-esc="widget.format_currency(line.get_amount())"/>
+                            </td>
+                        </tr>
+                    </t>
+                </table>
+            </xpath>
+        </t>
+    </templates>
