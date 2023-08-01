@@ -14,4 +14,35 @@
                 </div>
             </t>
         </xpath>
-        </t> </templates>
+        <xpath expr="//table[@class='pos-receipt-orderlines']" position="inside">
+            <tr>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Total</th>
+            </tr>
+            <t t-foreach="orderlines" t-as="orderline">
+                <tr>
+                    <td>
+                        <t t-esc="orderline.get_product().display_name"/>
+                        <t t-if="orderline.get_discount() > 0">
+                            <div class="pos-disc-font">
+                                Con descuento del <t t-esc="orderline.get_discount()"/>%
+                            </div>
+                        </t>
+                    </td>
+                    <td>
+                        <t t-esc="orderline.get_quantity_str_with_unit()"/>
+                    </td>
+                    <td>
+                        <t t-set="unit_price" t-value="orderline.get_display_price()"/>
+                        <t t-esc="unit_price"/>
+                    </td>
+                    <td style='text-align:right'>
+                        <t t-esc="widget.format_currency(orderline.get_price_with_tax())"/>
+                    </td>
+                </tr>
+            </t>
+        </xpath>
+    </t> 
+</templates>
