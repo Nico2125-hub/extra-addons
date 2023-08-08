@@ -59,7 +59,7 @@ odoo.define('owl_tutorials.product_create_button', function(require) {
         condition: function() {
             return true;
         },
-        position: ['before', 'SetPricelistButton'],
+        position: 'before: .SetPricelistButton',
     });
 
     Registries.Component.add(ProductCreateButton);
